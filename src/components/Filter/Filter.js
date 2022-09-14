@@ -1,14 +1,11 @@
-import { LabelFind, FindInput } from "./Filter.styled";
 import PropTypes from 'prop-types';
+import { FilterBox } from "./Filter.styled";
+import { TextField } from "@mui/material";
 
-const Filter = ({value, onChange}) => (
-    <LabelFind>Find contacts by name
-        <FindInput
-            type='text'
-            value={value}
-            onChange={onChange}
-        />
-    </LabelFind>
+const Filter = ({ value, onChange }) => (
+    <FilterBox>
+        <TextField variant="outlined" label="Find contact by name" type='text' value={value} onChange={onChange} />
+    </FilterBox>
 );
 
 Filter.propTypes = {

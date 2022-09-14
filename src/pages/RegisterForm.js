@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-// import { authOperations } from ;
+import { Helmet } from "react-helmet";
+import { authOperations } from "redux/auth";
+import Button from '@mui/material/Button';
+import { TextField } from "@mui/material";
+import HowToRegIcon from '@mui/icons-material/HowToReg';
+import BoxSx from "components/Box/Box";
+import { Form, InputsList, Input } from "components/FormStyle/FormStyle.styled";
 
 export default function RegisterForm() {
     const dispatch = useDispatch();
@@ -31,26 +37,27 @@ export default function RegisterForm() {
 
     return (
         <div>
-            <h1>Register Page</h1>
 
-            <form onSubmit={handleSubmit} autoComplete='off'>
-                <label>
-                    Name
-                    <input type='text' name='name' value={name} onChange={handleChange} />
-                </label>
+            <Helmet>
+                <title>Register Page</title>
+            </Helmet>
+            
+            <BoxSx>
+                <Form onSubmit={handleSubmit} autoComplete='off'>
+              
+                    <InputsList>
+                        <Input>
+                            <TextField variant="outlined" label="Name" type='text' name='name' value={name} onChange={handleChange} />
+                        </Input><Input>
+                            <TextField variant="outlined" label="Email" type='email' name='email' value={email} onChange={handleChange} />
+                        </Input><Input>
+                            <TextField variant="outlined" label="Password" type='password' name='password' value={password} onChange={handleChange} />
+                        </Input>
+                    </InputsList>
 
-                <label>
-                    Email
-                    <input type='email' name='email' value={email} onChange={handleChange} />
-                </label>
-
-                <label>
-                    Password
-                    <input type='password' name='password' value={password} onChange={handleChange} />
-                </label>
-                
-            </form>
-
+                    <Button variant="contained" type="submit" startIcon={<HowToRegIcon />}>Register</Button>
+                </Form>
+            </BoxSx>
         </div>
     );
-}
+};

@@ -1,6 +1,9 @@
-import styled from '@emotion/styled';
+import List from '@mui/material/List';
 
-export const ContactsList = styled.ul`
-    padding: 0;
-    margin: 0;
-`;
+export default function FolderList({children}) {
+  return (
+    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', margin: 'auto'}}>
+          {children}
+    </List>
+  );
+}

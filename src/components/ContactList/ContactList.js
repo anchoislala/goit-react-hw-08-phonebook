@@ -1,15 +1,15 @@
-import {ContactsList} from "./ContactList.styled";
 import PropTypes from 'prop-types';
 import ContactsItem from '../ContactsItem';
+import FolderList from "./ContactList.styled";
 
 const ContactList = ({ contacts }) => (
-    <ContactsList>
-        {contacts.map(({ id, name, phone }) => (
+    <FolderList>
+        {contacts.map(({ id, name, number }) => (
             <ContactsItem
                 key={id}
-                contact={{ id, name, phone }}/>
+                contact={{ id, name, number }} />
         ))}
-    </ContactsList>
+    </FolderList>
 );
 
 ContactList.propTypes = {
@@ -17,3 +17,5 @@ ContactList.propTypes = {
 };
 
 export default ContactList;
+
+

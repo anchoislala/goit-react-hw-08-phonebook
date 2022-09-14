@@ -20,7 +20,7 @@ const register = createAsyncThunk('auth/register', async credentials => {
 
         return data;
     } catch (error) {
-        console.log(error)
+        alert('Something went wrong, please enter your correct email and name, password must be at least 7 characters')
     }
 });
 
@@ -31,7 +31,7 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
 
         return data;
     } catch (error) {
-        console.log(error)
+        alert('Something went wrong, please try again')
     }
 });
 
@@ -40,7 +40,7 @@ const logOut = createAsyncThunk('auth/logout', async () => {
         await axios.post('/users/logout');
         token.unset();
     } catch (error) {
-        console.log(error)
+        console.log('logOut error', error)
     }
 });
 
@@ -50,7 +50,6 @@ const fetchCurrentUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) =>
 
     if (persistedToken === null) {
         return thunkAPI.rejectWithValue();
-        // return state;
     }
 
     token.set(persistedToken);

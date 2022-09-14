@@ -1,6 +1,13 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-// import { authOperations } from ;
+import { Helmet } from "react-helmet";
+import { authOperations } from "redux/auth"; 
+import { TextField, Button } from "@mui/material";
+import LoginIcon from '@mui/icons-material/Login';
+import { Container } from "@mui/system";
+import BoxSx from "components/Box/Box";
+import { Form, InputsList, Input } from "components/FormStyle/FormStyle.styled";
+
 
 export default function LoginForm() {
     const dispatch = useDispatch();
@@ -26,23 +33,33 @@ export default function LoginForm() {
     };
 
     return (
-        <div>
-            <h1>Login Page</h1>
 
-            <form onSubmit={handleSubmit} autoComplete='off'>
+        <Container>
+            
+            <Helmet>
+                <title>Login Page</title>
+            </Helmet>
 
-                <label>
-                    Email
-                    <input type='email' name='email' value={email} onChange={handleChange} />
-                </label>
+            <BoxSx>
+            
+                <Form onSubmit={handleSubmit} autoComplete='off'>
 
-                <label>
-                    Password
-                    <input type='password' name='password' value={password} onChange={handleChange} />
-                </label>
-                
-            </form>
+                    <InputsList>
+                        <Input>
+                            <TextField variant="outlined" label="Email" type="email" name='email' value={email} onChange={handleChange} />
+                        </Input>
+                        <Input>
+                            <TextField variant="outlined" label="Password" type="password" name='password' value={password} onChange={handleChange} />
+                        </Input>
+                    </InputsList>
+              
+                    <Button type="submit" variant="contained" startIcon={<LoginIcon />}>
+                        LogIn
+                    </Button>
 
-        </div>
+                </Form>
+            </BoxSx>
+        </Container>
+
     );
 };

@@ -10,7 +10,6 @@ import {
     PURGE,
     REGISTER,
 } from 'redux-persist';
-// import contactsReducer from "./contacts/contactsReducer";
 import { contactsReducer } from "./contacts";
 import { authReducer } from "./auth";
 
@@ -37,10 +36,3 @@ export const persistor = persistStore(store);
 
 
 
-
-
-// export const store = configureStore({
-//     reducer: {
-//         contacts: contactsReducer,
-//     },
-// });
